@@ -23,6 +23,18 @@ access_loss_line_manager,access_loss_line_manager,model_loss_line,account.group_
 access_loss_group,access_loss_group_manager,model_loss_group,account.group_account_user,1,0,0,0
 access_loss_line,access_loss_line,model_loss_line,account.group_account_user,1,0,0,0
 
+access_esg_tfr_group_manager,access_esg_tfr_group_manager,model_esg_tfr_group,account.group_account_manager,1,1,1,1
+access_esg_tfr_line_manager,access_esg_tfr_line_manager,model_esg_tfr_line,account.group_account_manager,1,1,1,1
+
+access_esg_tfr_group,access_esg_tfr_group_manager,model_esg_tfr_group,account.group_account_user,1,0,0,0
+access_esg_tfr_line,access_esg_tfr_line,model_esg_tfr_line,account.group_account_user,1,0,0,0
+
+access_esg_caf_group_manager,access_esg_caf_group_manager,model_esg_caf_group,account.group_account_manager,1,1,1,1
+access_esg_caf_line_manager,access_esg_caf_line_manager,model_esg_caf_line,account.group_account_manager,1,1,1,1
+
+access_esg_caf_group,access_esg_caf_group_manager,model_esg_caf_group,account.group_account_user,1,0,0,0
+access_esg_caf_line,access_esg_caf_line,model_esg_caf_line,account.group_account_user,1,0,0,0
+
 access_partner_share_manager,access_partner_share_manager,model_partner_share,account.group_account_manager,1,1,1,1
 access_partner_share_line_manager,access_partner_share_line_manager,model_partner_share_line,account.group_account_manager,1,1,1,1
 

@@ -18,6 +18,8 @@
         'views/assets_group.xml',
         'views/equity_group.xml',
         'views/profit_group.xml',
+        'views/esg_tfr_group.xml',
+        'views/esg_caf_group.xml',
         'views/loss_group.xml',
         'views/partner_share.xml',
         'views/account_account.xml',

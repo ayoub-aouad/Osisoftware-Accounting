@@ -51,9 +51,18 @@ class ImportJournalEntryWizard(models.TransientModel):
         for compte,intitule, debit, credit  in zip(compte,intitule, debit, credit ):
             val = 0
             if len(str(compte)) != 8:
-                raise ValidationError(_('Ce Compte " %s " ne peut pas être créé' % (compte)))
-                
-            
+                if len(str(compte)) == 6:
+                    compte = str(compte)+'00'
+                elif len(str(compte)) == 7:
+                    compte = str(compte) + '0'
+                elif len(str(compte)) == 9:
+                    accountings = self.env['account.account'].search([('code','!=',False)])
+                    for acc in accountings:
+                        acc.code = str(acc.code)+'0'
+                elif len(str(compte)) == 10:
+                    accountings = self.env['account.account'].search([('code','!=',False)])
+                    for acc in accountings:
+                        acc.code = str(acc.code)+'00'
             if '.' in str(debit) :
                 debit = float(debit)
             else :
@@ -63,23 +72,13 @@ class ImportJournalEntryWizard(models.TransientModel):
             else:
                 credit = 0.0
             if debit >= 0 and credit >= 0:
-                if str(compte[0]) == '2' or str(compte[0]) == '3' or str(str(compte[0]) + str(compte[1])) == '51' or str(compte[0])=='6':
-                    val =  float(debit) - float(credit)
-                    if val >= 0:
-                        debit = val
-                        credit = 0.0
-                    else:
-                        credit = (-1)*val
-                        debit= 0.0
-                elif str(compte[0]) == '1' or str(compte[0]) == '4' or str(str(compte[0]) + str(compte[1])) == '55' or str(compte[0])=='7':
-                    val =  float(debit) - float(credit)
-                    if val >= 0:
-                        debit = 0.0
-                        credit = val
-                    else:
-                        debit = (-1)*val
-                        credit= 0.0   
-          
+                val =  float(debit) - float(credit)
+                if val >= 0:
+                    debit = val
+                    credit = 0.0
+                else:
+                    credit = (-1)*val
+                    debit= 0.0  
             account = self.env['account.account'].search([('code','=',compte)])
             if not account.exists():
                 result = self.env['account.account'].search([('code','=',str(str(compte[0])+str(compte[1])+str(compte[2])+str(compte[3])+'0000'))])

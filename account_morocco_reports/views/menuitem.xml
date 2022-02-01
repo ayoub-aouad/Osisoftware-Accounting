@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <menuitem id="account_morocco_menu" name="Morocco Accounting"
-              parent="account.account_management_menu" sequence="20"
+              parent="account_accountant.menu_accounting" sequence="20"
               groups="base.group_no_one"/>
 
     <menuitem id="menuitem_assets_group" parent="account_morocco_menu"
@@ -15,6 +15,14 @@
     <menuitem id="menuitem_profit_group" parent="account_morocco_menu"
               action="view_profit_group_action"
               sequence="315"/>
+    
+    <menuitem id="menuitem_esg_tfr_group" parent="account_morocco_menu"
+              action="view_esg_tfr_group_action"
+              sequence="317"/>
+    
+    <menuitem id="menuitem_esg_caf_group" parent="account_morocco_menu"
+              action="view_esg_caf_group_action"
+              sequence="318"/>
 
     <menuitem id="menuitem_loss_group" parent="account_morocco_menu"
               action="view_loss_group_action"

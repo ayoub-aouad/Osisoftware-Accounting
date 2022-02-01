@@ -24,6 +24,18 @@
         <field name="context" eval="{'model': 'account.report.loss'}"/>
     </record>
 
+    <record id="action_account_report_esg_tfr" model="ir.actions.client">
+        <field name="name">Account Report ESG TFR</field>
+        <field name="tag">account_report</field>
+        <field name="context" eval="{'model': 'account.report.esg.tfr'}"/>
+    </record>
+
+    <record id="action_account_report_esg_caf" model="ir.actions.client">
+        <field name="name">Account Report ESG CAF</field>
+        <field name="tag">account_report</field>
+        <field name="context" eval="{'model': 'account.report.esg.caf'}"/>
+    </record>
+
     <!-- <menuitem id="account_morocco_reports_menu" name="Morocco Reports"
               parent="account.menu_finance_reports" sequence="0"/> -->
 
@@ -54,4 +66,18 @@
               parent="liasse_fiscale_tables.menu_tables_root"
               groups="account.group_account_user"
               sequence="3"/>
+    
+    <menuitem id="menu_action_account_report_esg_tfr"
+              name="TAB-05 ETAT DES SOLDES DE GESTION (TFR)"
+              action="action_account_report_esg_tfr"
+              parent="liasse_fiscale_tables.menu_tables_root"
+              groups="account.group_account_user"
+              sequence="6"/>
+
+    <menuitem id="menu_action_account_report_esg_caf"
+              name="TAB-05 ETAT DES SOLDES DE GESTION (CAF)"
+              action="action_account_report_esg_caf"
+              parent="liasse_fiscale_tables.menu_tables_root"
+              groups="account.group_account_user"
+              sequence="7"/>
 </odoo>

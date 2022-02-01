@@ -46,6 +46,7 @@ class AccountReportAssets(models.AbstractModel):
         :param date_to:
         :return:
         """
+        print('Get from fiscal year')
         date_dt = datetime.now()
         if isinstance(date_to, str):
             date_dt = fields.Date.from_string(date_to)
@@ -637,13 +638,100 @@ ORDER BY account_move_line.date, account_move_line.id
         :return: subtraction_list_columns
         """
         res = []
-        for col in list_columns:
-            new_col = col.copy()
+        print(len(list_columns))
+        print(list_columns)
+        # for col in list_columns:
+        if len(list_columns) >= 3:
+        # col 1 
+            new_col_1 = list_columns[0].copy()
+            value_1 = new_col_1.get('no_format_name', 0)
+            new_value_1 = value_1
+            name_1 = new_col_1.get('name', '')
+            new_name_1 = name_1
+
+            if 'no_format_name' in new_col_1:
+                
+                if value_type == 'reversed':
+                    new_value_1 = value_1 * -1
+                elif value_type == 'positive':
+                    new_value_1 = abs(value_1)
+                elif value_type == 'negative':
+                    new_value_1 = abs(value_1) * -1
+                if view_type == 'reversed':
+                    new_name_1 = value_1 * -1
+                elif view_type == 'positive':
+                    new_name_1 = abs(value_1)
+                elif view_type == 'negative':
+                    new_name_1 = abs(value_1) * -1
+            if new_value_1 != value_1:
+                new_col_1.update(no_format_name=new_value_1)
+            if new_name_1 != name_1:
+                new_col_1.update(name=self.format_value(new_name_1))
+            res.append(new_col_1)
+
+            # col 2
+            
+            new_col_2 = list_columns[1].copy()
+            value_2 = new_col_2.get('no_format_name', 0)
+            new_value_2 = value_2
+            name_2 = new_col_2.get('name', '')
+            new_name_2 = name_2
+
+            if 'no_format_name' in new_col_2:
+                
+                if value_type == 'reversed':
+                    new_value_2 = value_2 * -1
+                elif value_type == 'positive':
+                    new_value_2 = abs(value_2)
+                elif value_type == 'negative':
+                    new_value_2 = abs(value_2) * -1
+                if view_type == 'reversed':
+                    new_name_2 = value_2 * -1
+                elif view_type == 'positive':
+                    new_name_2 = abs(value_2)
+                elif view_type == 'negative':
+                    new_name_2 = abs(value_2) * -1
+            if new_value_2 != value_2:
+                new_col_2.update(no_format_name=new_value_2)
+            if new_name_2 != name_2:
+                new_col_2.update(name=self.format_value(new_name_2))
+            res.append(new_col_2)
+
+            # col 3
+            new_col_3 = list_columns[2].copy()
+            value_3 = new_col_3.get('no_format_name', 0)
+            new_value_3 = value_3
+            name_3 = new_col_3.get('name', '')
+            new_name_3 = name_3
+
+            if 'no_format_name' in new_col_3:
+                
+                if value_type == 'reversed':
+                    new_value_3 = value_3 
+                elif value_type == 'positive':
+                    new_value_3 = value_3
+                elif value_type == 'negative':
+                    new_value_3 = value_3
+                if view_type == 'reversed':
+                    new_name_3 = value_3
+                elif view_type == 'positive':
+                    new_name_3 = value_3
+                elif view_type == 'negative':
+                    new_name_3 = value_3
+            if new_value_3 != value_3:
+                new_col_3.update(no_format_name=new_value_3)
+            if new_name_3 != name_3:
+                new_col_3.update(name=self.format_value(new_name_3))
+            res.append(new_col_3)
+        elif len(list_columns) ==1:
+            new_col = list_columns[0].copy()
             value = new_col.get('no_format_name', 0)
             new_value = value
             name = new_col.get('name', '')
             new_name = name
+
             if 'no_format_name' in new_col:
+                
                 if value_type == 'reversed':
                     new_value = value * -1
                 elif value_type == 'positive':

@@ -3,6 +3,7 @@ from odoo import models , fields, api, _
 class JournalImport(models.TransientModel):
     _inherit = 'import.journal.entry'
 
+
     def convert_debit_credit(self,val,x):
 
         if val[x] != '':
