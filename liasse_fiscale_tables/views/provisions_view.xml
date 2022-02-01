@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	<record id="view_provisions_form" model="ir.ui.view">
+	    <field name="name">view.provisions.form</field>
+	    <field name="model">provisions</field>
+	    <field name="arch" type="xml">
+	        <form string="Provisions">
+				<group>
+					<field name="name"/>
+					<field name="fy_n_id" required="1" domain="[('type_id.fiscal_year','=',True)]"/>
+					<notebook colspan="4">
+						<page string="Lignes">
+							<field name="provisions_line_ids" nolabel="1" colspan="4">
+								<tree editable="bottom">
+									<field name="code"/>
+									<field name="name"/>
+									<field name="montant_debut"/>
+									<field name="dotation_exploitation"/>
+									<field name="dotation_financiere"/>
+									<field name="dotation_non_courante"/>
+									<field name="reprises_exploitation"/>
+									<field name="reprises_financiere"/>
+									<field name="reprises_non_courante"/>
+								</tree>
+							</field>
+						</page>
+					</notebook>
+				</group>
+	        </form>
+	    </field>
+	</record>
+
+	<record id="view_provisions_tree" model="ir.ui.view">
+	    <field name="name">view.provisions.tree</field>
+	    <field name="model">provisions</field>
+	    <field name="arch" type="xml">
+	        <tree string="Provisions">
+				<field name="name"/>
+				<field name="fy_n_id"/>
+			</tree>
+		</field>
+	</record>
+
+	<record id="action_provisions" model="ir.actions.act_window">
+	    <field name="name">PROVISIONS</field>
+	    <field name="type">ir.actions.act_window</field>
+	    <field name="res_model">provisions</field>
+	    <field name="view_mode">tree,form</field>
+	</record>
+
+	<menuitem name="TAB-09 PROVISIONS" id="menu_provisions_id" parent="menu_tables_root" action="action_provisions" 
+	sequence="10"/>
+</odoo>
